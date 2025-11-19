@@ -42,10 +42,27 @@ nav {
     justify-content: center;  /* 垂直置中 */
     height: 100vh;  /* 滿版 */
 }
+
 #home h1 {
     font-size: 65px;
     margin-bottom: 12px;
 }
+
+.typewriter-container {
+    display: flex;
+    justify-content: center;
+}
+
+.typewriter {
+    border-right: 2px solid black; /* 當作游標 */
+    width: fit-content;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
 #home p {
     font-size: 25px;
 }
@@ -71,25 +88,47 @@ nav {
     font-size: 20px;
     line-height: 2;
 }
+
 .tech-icon {
     width: 100px;
     height: 100px;
     margin: 12.5px;
+    object-fit: contain; /* 維持圖片比例 */
+    transition: transform 0.3s ease; /*平滑放大*/
 }
+
+.tech-icon:hover {
+    transform: scale(1.1);
+}
+
 .tech-stack {
     margin-top: 150px;
+    overflow: hidden;
 }
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.tech-icons-wrapper{
+    display: flex;
+    width: fit-content;
+    animation: scroll 10s ease infinite;
+}
+
+.tech-icons-wrapper:hover {
+    animation-play-state: paused;
+}
+
 .tech-icons {
     display: flex;
-    overflow-x: scroll; /* 放不下的圖片往右放 */
     scrollbar-width: none; /* 隱藏 scrollbar */
     gap: 12.5px;
-}
-.tech-icon {
-    width: 100px;
-    height: 100px;
-    object-fit: contain; /* 維持圖片比例 */
-    margin: 12.5px;
 }
 
 .timeline {
