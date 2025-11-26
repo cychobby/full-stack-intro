@@ -163,7 +163,9 @@ nav {
 }
 
 .project {
-    flex: 0 0 375px; /* grow, shrink, basis */
+    flex: 1 1 375px; /* grow, shrink, basis */
+    min-width: 375px;
+    height: 250px;
     background-color: white;
     border-radius: 16px;
     padding: 35px;
@@ -193,8 +195,53 @@ nav {
     transform: translateY(-3px); /* 往上移動 */
 }
 
+/* Control hovered card */
+.project-list .project:hover {
+    flex: 1 1 0;
+}
+
+/* when list hovered, control "not" hovered cards */
+.project-list:hover .project:not(:hover) {
+    flex: 0 0 90px; 
+    min-width: 90px;
+}
+
+.project .content {  /* project的content */
+    transition: opacity 0.3s ease;
+}
+
+/* when list hovered, control "not" hovered cards' content */
+.project-list:hover .project:not(:hover) .content {
+    opacity: 0;
+}
+
 .project p:last-child {
     margin-top: auto; /* 讓日期對齊底部 */
+}
+
+.search-part {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search-part input {
+    flex: 1;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 16px;
+}
+
+.search-part button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #contact {
