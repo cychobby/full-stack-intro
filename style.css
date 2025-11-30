@@ -12,11 +12,19 @@ html {
 	  list-style: none;  /* 移除圓點 */
     gap: 50px;                      
 }
+
+.nav-item {
+    position: relative;
+}
+
 .nav-item a {
     text-decoration: none;  /* 移除文字預設樣式 */
     color: black;
     font-size: 16px;
     font-weight: bold;
+    transition: color 0.3s;
+    display: block;
+    padding-bottom: 5px;
 }
 nav {
 	background-color: white;
@@ -31,8 +39,25 @@ nav {
 .nav-item a:hover {
     color: gray;
 }
-.nav-item a {
-    transition: color 0.3s;
+
+.nav-item a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* 距離父元素底部 0px */
+    left: 0;   /* 距離父元素左邊 0px */
+    right: 0;  /* 距離父元素右邊 0px */
+    height: 2px;
+    background-color: black;
+    animation: slideIn 1s linear;
+}
+
+@keyframes slideIn {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
 }
 
 #home {
@@ -326,4 +351,22 @@ nav {
 .social-icon svg {
     width: 24px;
     height: 24px;
+}
+
+#home,
+#projects,
+#contact,
+.fade-in-section {
+    opacity: 0;  /* 透明狀態 */
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#home.visible,
+#about.visible,
+#projects.visible,
+#contact.visible,
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

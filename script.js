@@ -55,7 +55,7 @@ projectItems.forEach(item => {
 
 // 打字機效果
 const typewriterElement = document.querySelector(".typewriter");
-const texts = ["CS junior", "LLM user", "Freshman of Full stack development"];
+const texts = ["A junior CS major", "LLM user", "Freshman of Full stack development"];
 let textIndex = 0;
 let isDeleting = false;
 
@@ -124,4 +124,54 @@ searchInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         searchProject();
     }
+});
+
+// Side Bar with Progress
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-item a");
+
+function updateActiveNav() {
+    let currentSection = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        // 如果畫面捲動位置在這個 section 的範圍內
+        if (window.scrollY >= sectionTop - 100) {
+            currentSection = section.getAttribute("id");
+        }
+    });
+    // 更新 nav 連結的 active 狀態
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("active");
+        }
+    });
+}
+window.addEventListener("scroll", updateActiveNav);
+updateActiveNav();
+
+// Fade In/Out
+const observerOptions = {
+    threshold: 0.15,  // 當 section 有 15% 進入畫面時觸發
+    rootMargin: "0px"
+}
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting){
+            entry.target.classList.add("visible");  /* 當 section 進入畫面時淡入 */
+        } else {
+            entry.target.classList.remove("visible");  /* 當 section 離開畫面時淡出 */
+        }
+    });
+}, observerOptions);
+// 觀察所有 section
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
+// 為了about客製化的區塊
+const fadeInSections = document.querySelectorAll(".fade-in-section");
+fadeInSections.forEach(section => {
+    sectionObserver.observe(section);
 });

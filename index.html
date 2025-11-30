@@ -25,14 +25,14 @@
         </div>
     </section>
     <section id="about">
-        <div class="about-me">
-            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="about-me fade-in-section">
+            <img src="myphoto.png" alt="Profile Picture" class="profile-pic">
             <div>
                 <h2>About Me</h2>
                 <p>我的名字叫陳炤宇 21歲。住在新竹市東區的寶山路一帶，未婚。我在陽明交通大學吹風。每天都要上課到5點才能回家。我不抽煙，酒僅止於淺嚐。熬到凌晨3點睡，每天要睡足5個小時。睡前，我一定喝一杯溫牛奶，然後滑1小時的手機，上了床，馬上熟睡。一覺到天亮，把疲勞和壓力累積到隔天。醫生都說我很正常</p>
             </div>
         </div>
-        <div class="tech-stack">
+        <div class="tech-stack fade-in-section">
             <h2>Tech Stack</h2>
             <div class="tech-icons-wrapper">
                 <div class="tech-icons">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="timeline">
+        <div class="timeline fade-in-section">
             <h2>Timeline</h2>
             <ul>
                 <li><strong>2023/9：</strong>就讀陽明交通大學</li>
@@ -102,11 +102,12 @@
                 </svg>
             </a>
         </div>
-        <div class="contact-form">
-            <input type="text" placeholder="Please enter your name">
-            <input type="email" placeholder="Please enter your email">
-            <textarea placeholder="Please enter your message"></textarea>
-        </div>
+        <form class="contact-form" action="https://formspree.io/f/movzgepd" method="POST">
+            <input type="text" name="name" placeholder="Please enter your name" required>
+            <input type="email" name="_replyto" placeholder="Please enter your email" required>
+            <textarea name="message" placeholder="Please enter your message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </section>
     <section id="recommended course">
         <h2>Recommended Courses</h2>
