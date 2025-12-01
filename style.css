@@ -97,8 +97,8 @@ nav {
 }
 .profile-pic {
     border-radius: 50%; /* 圓形 */
-    width: 250px;
-    height: 250px;
+    width: 240px;
+    height: 240px;
 }
 .about-me {
     display: flex;
@@ -356,6 +356,7 @@ nav {
 #home,
 #projects,
 #contact,
+#recommended_courses,
 .fade-in-section {
     opacity: 0;  /* 透明狀態 */
     transform: translateY(50px);
@@ -366,7 +367,127 @@ nav {
 #about.visible,
 #projects.visible,
 #contact.visible,
+#recommended_courses.visible,
 .fade-in-section.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+#recommended_courses {
+    padding: 80px;
+}
+
+#recommended_courses h2 {
+    font-size: 50px;
+    margin-bottom: 25px;
+}
+
+.bookshelf-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.bookshelf-image {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    /*margin: 0 auto;*/
+    margin-top: 70px;
+    transform: scale(3, 2);
+    transform-origin: center center; /* 放大後置中 */
+}
+
+.course-shelf {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* 讓hover穿透到課程圖片 */
+}
+
+.shelf-item {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto; /* 恢復課程圖片的hover */
+}
+
+/* 根據書架與圖片本身調整位置、大小百分比 */
+/* 一層2格，從左到右 */
+/* 第一格 */
+.shelf-item:nth-child(1) {
+    left: 33%;
+    top: -3%;
+    width: 15%;
+    /*animation: wave 3s ease-in-out infinite;*/
+}
+
+/* 第二格 */
+.shelf-item:nth-child(2) {
+    left: 53%;
+    top: -7%;
+    width: 15%;
+    transform: scale(0.85);
+}
+
+/* 第二層 */
+.shelf-item:nth-child(3) {
+    left: 33%;
+    top: 42%;
+    width: 15%;
+    transform: scale(0.82);
+}
+
+.shelf-item:nth-child(4) {
+    left: 53%;
+    top: 48%;
+    width: 15%;
+    transform: scale(1.05);
+}
+
+.course-image {
+    max-width: 100%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Animation 1: 課程圖片浮動動畫 */
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 各課程不同的延遲創造波浪效果 */
+.shelf-item:nth-child(1) .course-image {
+    animation: wave 3s ease-in-out infinite;
+}
+.shelf-item:nth-child(2) .course-image {
+    animation: wave 3s ease-in-out infinite 0.5s;
+}
+.shelf-item:nth-child(3) .course-image {
+    animation: wave 3s ease-in-out infinite 1s;
+}
+.shelf-item:nth-child(4) .course-image {
+    animation: wave 3s ease-in-out infinite 1.5s;
+}
+/* hover時放大 */
+.shelf-item:hover {
+    transform: translateY(0) scale(1.15);
 }
