@@ -464,7 +464,7 @@ nav {
     cursor: pointer;
 }
 
-/* Animation 1: 課程圖片浮動動畫 */
+/* Animation 1: 課程圖片浮動 */
 @keyframes wave {
     0%, 100% {
         transform: translateY(0px);
@@ -490,4 +490,20 @@ nav {
 /* hover時放大 */
 .shelf-item:hover {
     transform: translateY(0) scale(1.15);
+}
+
+/* Animation 2: button pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+.search-part button {
+    animation: pulse 2s ease-in-out infinite;
+}
+.contact-form button {
+    animation: pulse 2s ease-in-out infinite;
 }
