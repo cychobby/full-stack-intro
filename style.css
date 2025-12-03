@@ -499,6 +499,7 @@ nav {
     }
     50% {
         transform: scale(1.05);
+        background-color: rgb(21, 66, 88);
     }
 }
 .search-part button {
